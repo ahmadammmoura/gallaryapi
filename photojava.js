@@ -1,4 +1,3 @@
-let page = 1;
 
 function openVbox(){
       document.getElementById("viewbox").style.display="block";
@@ -34,23 +33,31 @@ function plusSlides(n) {
 
   document.getElementById('container');
   let arr=[];
+  page = 1;
 
-  const myheaders = new Headers();
-  fetch('http://localhost:3000/photos?page=' + page , {
-        method: 'GET',
-    })
-    .then(Response =>
-        Response.json())
-        .then( arrayphoto =>{ console.log(arrayphoto.photos[5])
-          page++;
-          for (var i = 0; i < 19; i++) {
-            document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ arrayphoto.photos[i] + '"> </div>';
-          }
-        });
-        let arr2 = [arr,]
-  // for (var i = 0; i < 19; i++) {
-  //       document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ arrayphoto.photos[i] + '"> </div>';
-  //               }
+  getImg();
+
+  function getImg(){
+
+    fetch('http://localhost:3000/photos/'+page , {
+      method: 'GET',
+  })
+  .then(Response =>
+      Response.json())
+      .then( data =>{ 
+        page++;
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+          document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ data[i] + '"> </div>';
+          document.getElementById("contnt").innerHTML+='<div class="pics" ><img class="picbox"  src="'+data[i]+'" alt=""></div>'+'<img class="sizenext " class="next" onclick="plusSlides(1)"  src="next.png" alt="">'+'<img class="sizeprev" class="prev"  onclick="plusSlides(-1)" src="prev.png" alt="">'
+                  } 
+      });
+  }
+  
+  
+//   for (var i = 0; i < 19; i++) {
+//         document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ arrayphoto.photos[i] + '"> </div>';
+//                 }
 // function addData2(){
 //   const html = arr.map((item, index) => {
 //       return  '<div class="pics" ><img class="picbox"  src="'+item.url+'" alt=""></div>'+'<img class="sizenext " class="next" onclick="plusSlides(1)"  src="next.png" alt="">'+'<img class="sizeprev" class="prev"  onclick="plusSlides(-1)" src="prev.png" alt="">'
@@ -58,7 +65,7 @@ function plusSlides(n) {
 //   document.getElementById('contnt').innerHTML = html.join('');
 // }
  
-// function showmore (){
-
-// }
+function showmore (){
+  getImg();
+}
 
