@@ -175,12 +175,7 @@ body{
   .paragragh:hover{
       transform: scale(1.3);
   }
-  .showmore{
-      width: 100px;
-      height: 30px;
-      position: fixed;
-      right: 5px;
-  }
+
   
   
   

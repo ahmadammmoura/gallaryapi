@@ -53,17 +53,18 @@ function plusSlides(n) {
                   } 
       });
   }
+
+
+
   
-  
-//   for (var i = 0; i < 19; i++) {
-//         document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ arrayphoto.photos[i] + '"> </div>';
-//                 }
-// function addData2(){
-//   const html = arr.map((item, index) => {
-//       return  '<div class="pics" ><img class="picbox"  src="'+item.url+'" alt=""></div>'+'<img class="sizenext " class="next" onclick="plusSlides(1)"  src="next.png" alt="">'+'<img class="sizeprev" class="prev"  onclick="plusSlides(-1)" src="prev.png" alt="">'
-//   });
-//   document.getElementById('contnt').innerHTML = html.join('');
-// }
+  window.addEventListener("scroll",()=>{
+    const scroll =document.documentElement.scrollHeight - window.innerHeight;
+    const scrollpage = window.scrollY;
+    if (scroll===scrollpage){
+      getImg()
+      
+    }
+  })
  
 function showmore (){
   getImg();
