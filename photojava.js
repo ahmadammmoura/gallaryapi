@@ -17,7 +17,7 @@ function plusSlides(n) {
     showSlides(slideIndex += n);
   }
   function imgpicker(n) {
-    showSlides(slideIndex = n);
+    showSlides(slideIndex = n+1);
   }
   function showSlides(n) {
     var i;
