@@ -12,10 +12,6 @@ app.get("/photos/:page/", (req, res) => {
         if (err) throw err;
         es = data.split('\n');
         
-        
-        
-        
-
     });
 
     res.header("Access-Control-Allow-Origin", "*");

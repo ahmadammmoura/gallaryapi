@@ -2,6 +2,12 @@
 function openVbox(){
       document.getElementById("viewbox").style.display="block";
 }
+function openpost(){
+  document.getElementById('postmovies').style.display="block"
+}
+function closepost(){
+  document.getElementById('postmovies').style.display="none"
+}
 function closeVbox() {
     document.getElementById("viewbox").style.display = "none";
   }
