@@ -35,30 +35,61 @@ function plusSlides(n) {
     dots[slideIndex-1].className += " active";
   
   }
+
+  document.getElementById('post').addEventListener('click',add)
+
+
+  function add (){
+    const photoUrl = document.getElementById('photo').value;
+    const movieName = document.getElementById('name').value;
+    const desc = document.getElementById('desc').value
+
+    const myheader = new Headers();
+
+    myheader.append('Content-Type', 'application/json');
+    fetch('http://localhost:3000/photos',{
+      method :'post',
+      headers : myheader,
+      body : JSON.stringify({
+        photourl : photoUrl,
+        name : movieName,
+        desc : desc
+      })
+
+    })
+    .then(response=>response.json())
+    .then((data) => {
+      console.log(data);
+    })
+       
+    
+  }
+
+
   
 
-  document.getElementById('container');
-  let arr=[];
-  page = 1;
+  // document.getElementById('container');
+  // let arr=[];
+  // page = 1;
 
-  getImg();
+  // getImg();
 
-  function getImg(){
+  // function getImg(){
 
-    fetch('http://localhost:3000/photos/'+page , {
-      method: 'GET',
-  })
-  .then(Response =>
-      Response.json())
-      .then( data =>{ 
-        page++;
-        console.log(data);
-        for (var i = 0; i < data.length; i++) {
-          document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ data[i] + '"> </div>';
-          document.getElementById("contnt").innerHTML+='<div class="pics" ><img class="picbox"  src="'+data[i]+'" alt=""></div>'+'<img class="sizenext " class="next" onclick="plusSlides(1)"  src="next.png" alt="">'+'<img class="sizeprev" class="prev"  onclick="plusSlides(-1)" src="prev.png" alt="">'
-                  } 
-      });
-  }
+  //   fetch('http://localhost:3000/photos/'+page , {
+  //     method: 'GET',
+  // })
+  // .then(Response =>
+  //     Response.json())
+  //     .then( data =>{ 
+  //       page++;
+  //       console.log(data);
+  //       for (var i = 0; i < data.length; i++) {
+  //         document.getElementById("container").innerHTML+='<div class="boxs" >  <img class="poster" onclick="openVbox();imgpicker('+ i + ')" src="'+ data[i] + '"> </div>';
+  //         document.getElementById("contnt").innerHTML+='<div class="pics" ><img class="picbox"  src="'+data[i]+'" alt=""></div>'+'<img class="sizenext " class="next" onclick="plusSlides(1)"  src="next.png" alt="">'+'<img class="sizeprev" class="prev"  onclick="plusSlides(-1)" src="prev.png" alt="">'
+  //                 } 
+  //     });
+  // }
 
 
 
