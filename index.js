@@ -16,7 +16,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "9951061722",
-  database : "ahmadmovies"
+  database : "movies"
 });
 
 con.connect(function(err) {
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get('/photos',(req,res)=>{
-  con.query('SELECT * FROM movies',(err , rows, fields)=>{
+  con.query('SELECT * FROM movieslist',(err , rows, fields)=>{
 
     console.log(rows);
     res.send(rows)
@@ -39,22 +39,19 @@ app.get('/photos',(req,res)=>{
 
 });
 
-// app.post( "/photos" , ( req , res ) =>{
+app.post( "/photos" , ( req , res ) =>{
 
-//     let moviePhoto = req.body.photourl;
-//     let movieName = req.body.name;
-//     let movieDesc = req.body.desc;
+    let moviePhoto = req.body.photourl;
+    let movieName = req.body.name;
+    let movieDesc = req.body.desc;
 
-//     const sql = `
-//     INSERT INTO movies (photourl,moviename, desc)
-//     VALUES (${moviePhoto} , ${movieName} , ${movieDesc});
-//     `;
-//     con.query(sql, function(err,result){
-//         console.log(sql);
-//         console.log(result);
-//         res.send(result)
-//     });
-// } )
+    const sql = "INSERT INTO movieslist  ( `photourl`, `moviename`, `desc`) VALUES ( '" +moviePhoto +" ', '" + movieName+" ', '" + movieDesc + "' ) ;" ;
+    con.query(sql, function(err,result){
+        console.log(err);
+        console.log(result);
+        res.send(result)
+    });
+} )
 
 
 

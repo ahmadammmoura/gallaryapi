@@ -36,34 +36,7 @@ function plusSlides(n) {
   
   }
 
-  // document.getElementById('post').addEventListener('click',add)
-
-
-  // function add (){
-  //   const photoUrl = document.getElementById('photo').value;
-  //   const movieName = document.getElementById('name').value;
-  //   const desc = document.getElementById('desc').value
-
-  //   const myheader = new Headers();
-
-  //   myheader.append('Content-Type', 'application/json');
-  //   fetch('http://localhost:1337/photos',{
-  //     method :'post',
-  //     headers : myheader,
-  //     body : JSON.stringify({
-  //       photourl : photouUrl,
-  //       name : movieName,
-  //       desc : desc
-  //     })
-
-  //   })
-  //   .then(response=>response.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-       
-    
-  // }
+ 
 
 
   

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="add.css">
+    </head>
+
+    <body>
+        <div id="postmovies" class="postmovies" >
+
+            <button id="openadd" onclick="openpost()" >add</button><br>
+            <button id="opendelete" onclick="opendelete()" >delete</button>
+
+            
+                    <div class="post" id="postdiv" >
+                        <input type="text" id="photo" placeholder="link of the photo"><br>
+                        <input type="text" id="name" placeholder="name of the movie"><br>    
+                        <input type="text" id="desc" placeholder="description"><br>
+                        <button id="post"  > add </button>
+                    </div>
+                    <div class="delete" id="delete">
+                            <input type="text" id="desc" placeholder="delete movie by name"><br>
+
+                            <button class="deletebtn" > delete </button><br>
+    
+                    </div>
+        </div>
+        <script src="add.js"></script>
+    </body>
+</html>
